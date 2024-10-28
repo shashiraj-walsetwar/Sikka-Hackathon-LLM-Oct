@@ -4,6 +4,8 @@ const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
 const clearButton = document.getElementById('clear-chat');
 
+
+
 // Generate a random session ID
 const sessionId = Math.random().toString(36).substring(7);
 

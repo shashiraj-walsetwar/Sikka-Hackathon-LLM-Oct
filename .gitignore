@@ -7,3 +7,7 @@ env/
 # Environment variables and secrets
 .env
 key.py
+
+# cache
+__pycache__/
+*.pyc
