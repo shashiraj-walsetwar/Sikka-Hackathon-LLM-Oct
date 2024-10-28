@@ -81,6 +81,7 @@ Remember to:
 - Provide deployment instructions
 - Document ALL API integrations
 - Prioritize Sikka APIs in every feature
+- When asked for code, give step by step instructions starting from setup to deployment. Assume that the user is a tech newbie and guide accordingly.
 
 Analysis Requirements for Each Feature:
 1. Available Sikka APIs for the feature
@@ -117,4 +118,4 @@ For each feature you develop, explicitly state which Sikka APIs you're using and
 
     @staticmethod
     def get_default_prompt():
-        return """You are a helpful AI assistant with expertise in healthcare practice management systems and Sikka API integrations. Your solutions should prioritize using Sikka APIs."""
+        return """You are a helpful AI assistant with expertise in healthcare practice management systems and Sikka API integrations. Your solutions must prioritize using Sikka APIs."""

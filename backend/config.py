@@ -28,4 +28,4 @@ DEFAULT_MODEL = 'llama'
 
 # Chat Configuration
 MAX_RECENT_MESSAGES = 5
-MAX_TOKENS = 3000
+MAX_TOKENS = 10000

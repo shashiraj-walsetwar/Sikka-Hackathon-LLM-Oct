@@ -134,6 +134,283 @@ class APIDocumentation:
                     "fee_amount",
                     "procedure_code"
                 ]
+            ),
+
+            "practice_location_get": APIEndpoint(
+                name="Practice Location",
+                method="GET",
+                path="/v4/practice_location",
+                description="Get all practice details for authorized office id and return with access is on or off",
+                params={
+                    "office_id": "Office_id received from authorized_practices API"
+                },
+                required_params=["office_id"],
+                response_fields=[
+                    "practice_id",
+                    "name",
+                    "address",
+                    "access_status"
+                ],
+                sortBy=[
+                    "practice_id"
+                ]
+            ),
+            "finance_customers": APIEndpoint(
+                name="Finance Customers",
+                method="GET",
+                path="/v4/finance/customers",
+                description="Returns customer details data from practice's finance system",
+                params={
+                    "request_key": "A Valid 32 characters alpha-numeric request key",
+                    "fullname": "fullname",
+                    "customer_id": "customer id from finance system (different from customer_id in other APIs)",
+                    "name": "name"
+                },
+                required_params=["request_key"],
+                response_fields=[
+                    "customer_id",
+                    "name",
+                    "fullname",
+                    "address",
+                    "email",
+                    "phone"
+                ],
+                sortBy=["customer_id"]
+            ),
+
+            "appointments": APIEndpoint(
+                name="Appointments", 
+                method="GET",
+                path="/v4/appointments",
+                description="Returns appointments data from practice",
+                params={
+                    "request_key": "A Valid 32 characters alpha-numeric request key",
+                    "appointment_sr_no": "appointment serial number from appointments",
+                    "practice_id": "practice id of office",
+                    "patient_id": "Patient ID as per the management system",
+                    "guarantor_id": "guarantor id in practice management system",
+                    "provider_id": "Provider id as per practice management system",
+                    "startdate": "format: yyyy-mm-dd, start date",
+                    "enddate": "format: yyyy-mm-dd, end date",
+                    "procedure_code": "Procedure code",
+                    "status": "Status",
+                    "operatory": "Operatory",
+                    "type": "Type"
+                },
+                required_params=["request_key"],
+                response_fields=[
+                    "appointment_sr_no",
+                    "patient_id",
+                    "provider_id", 
+                    "date",
+                    "time",
+                    "status",
+                    "type",
+                    "operatory"
+                ],
+                sortBy=[
+                    "appointment_sr_no",
+                    "appointment_date",
+                    "appointment_time",
+                    "patient_id"
+                ]
+            ),
+
+            "appointments_available_slots": APIEndpoint(
+                name="Available Appointment Slots",
+                method="GET",
+                path="/v4/appointments_available_slots",
+                description="Returns available appointments slots from practice",
+                params={
+                    "request_key": "A Valid 32 characters alpha-numeric request key",
+                    "provider_id": "Provider id as per practice management system",
+                    "practice_id": "practice id of office",
+                    "startdate": "format: yyyy-mm-dd, start date",
+                    "enddate": "format: yyyy-mm-dd, end date",
+                    "operatory": "Operatory"
+                },
+                required_params=["request_key"],
+                response_fields=[
+                    "date",
+                    "time",
+                    "provider_id",
+                    "operatory"
+                ],
+                sortBy=[
+                    "practice_id",
+                    "date",
+                    "time"
+                ]
+            ),
+
+            "accounts_receivables": APIEndpoint(
+            name="Accounts Receivables",
+            method="GET",
+            path="/v4/accounts_receivables",
+            description="Returns account receivables details from practice",
+            params={
+                "request_key": "A Valid 32 characters alpha-numeric request key",
+                "practice_id": "practice id of office",
+                "guarantor_id": "guarantor id in practice management system",
+                "current_date": "Value should be true/false. If false returns all data, if true returns current AR"
+            },
+            required_params=["request_key"],
+            response_fields=[
+                "guarantor_id",
+                "amount_between_0_30",
+                "amount_between_31_60",
+                "amount_between_61_90",
+                "amount_greater_than_90",
+                "current_date",
+                "entry_id"
+            ],
+            sortBy=[
+                "guarantor_id",
+                "current_date",
+                "entry_id",
+                "practice_id",
+                "amount_between_0_30",
+                "amount_between_31_60",
+                "amount_between_61_90",
+                "amount_greater_than_90"
+            ]
+        ),
+
+            "contact_details": APIEndpoint(
+                name="Contact Details",
+                method="GET",
+                path="/v4/contact_details",
+                description="Returns contact details of patients from practice",
+                params={
+                    "request_key": "A Valid 32 characters alpha-numeric request key",
+                    "practice_id": "practice id of office",
+                    "patient_id": "patient id in practice management system",
+                    "uid": "Unique Id",
+                    "contact_of": "Contact of patient",
+                    "contact_type": "Contact Type of patient",
+                    "contact_value": "Contact value"
+                },
+                required_params=["request_key"],
+                response_fields=[
+                    "uid",
+                    "contact_of",
+                    "contact_type",
+                    "contact_value",
+                    "patient_id"
+                ],
+                sortBy=[
+                    "uid",
+                    "contact_of", 
+                    "contact_type",
+                    "contact_value",
+                    "practice_id"
+                ]
+            ),
+
+            "payment_types": APIEndpoint(
+                name="Payment Types",
+                method="GET",
+                path="/v4/payment_types",
+                description="Returns payment types from practice",
+                params={
+                    "request_key": "A Valid 32 characters alpha-numeric request key",
+                    "practice_id": "practice id of office",
+                    "code": "payment type code in practice management system",
+                    "customer_id": "customer id of office",
+                    "is_adjustment_type": "value should be true. it will return Credit Adjustment Types only",
+                    "is_debit_adjustment_type": "value should be true. it will return Debit Adjustment Types only",
+                    "is_insurance_type": "value should be true. it will return Insurance Payment Types only",
+                    "are_credit_card_details_required": "value should be true. it will return Payment Types which require credit card details for POST transaction for Planet DDS PMS only",
+                    "app_id": "This is the ID assigned to the application when the application is registered on API portal"
+                },
+                required_params=["request_key"],
+                response_fields=[
+                    "code",
+                    "description",
+                    "type"
+                ],
+                sortBy=["code"]
+            ),
+
+            "patient_statuses": APIEndpoint(
+                name="Patient Statuses",
+                method="GET",
+                path="/v4/patient_statuses",
+                description="Returns patient status data from practice",
+                params={
+                    "request_key": "A Valid 32 characters alpha-numeric request key",
+                    "practice_id": "practice id of office"
+                },
+                required_params=["request_key"],
+                response_fields=[
+                    "patient_id",
+                    "status",
+                    "practice_id"
+                ],
+                sortBy=["practice_id"]
+            ),
+            "patients": APIEndpoint(
+                name="Patients",
+                method="GET",
+                path="/v4/patients",
+                description="Returns patient information from practice",
+                params={
+                    "request_key": "A Valid 32 characters alpha-numeric request key",
+                    "email": "Email id of patient",
+                    "patient_id": "Patient ID as per the management system",
+                    "firstname": "First name of patient",
+                    "practice_id": "Practice ID of office",
+                    "lastname": "Last name of patient",
+                    "last_visit": "Last Visit",
+                    "cell": "Cell Number",
+                    "search": "Search patient by firstname, lastname, email, middlename, city, state, zipcode, homephone, workphone, cell",
+                    "fields": "fields parameter allows to return only requested fields with mandatory fields",
+                    "status": "Status of patient",
+                    "phone": "Phone Number"
+                },
+                required_params=["request_key"],
+                response_fields=[
+                    "patient_id",
+                    "guarantor_id", 
+                    "firstname",
+                    "middlename",
+                    "lastname",
+                    "preferred_name",
+                    "salutation",
+                    "birthdate",
+                    "status",
+                    "patient_note",
+                    "medical_note",
+                    "alert_note",
+                    "other_note",
+                    "gender",
+                    "marital_status",
+                    "address_line1",
+                    "address_line2", 
+                    "city",
+                    "state",
+                    "zipcode",
+                    "homephone",
+                    "workphone",
+                    "cell",
+                    "email",
+                    "employer_id",
+                    "billing_type",
+                    "first_visit",
+                    "last_visit",
+                    "provider_id",
+                    "practice_id",
+                    "primary_insurance_company_id",
+                    "secondary_insurance_company_id",
+                    "primary_relationship",
+                    "secondary_relationship"
+                ],
+                sortBy=[
+                    "patient_id",
+                    "firstname",
+                    "lastname",
+                    "zipcode"
+                ]
             )
         }
 
