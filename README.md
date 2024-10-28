@@ -4,12 +4,12 @@ A Flask-based web application that provides a chat interface for integrating wit
 
 ## 🚀 Features
 
-Interactive chat interface for API interactions
-Support for multiple AI models (Llama 3.2 and Claude 3 Sonnet)
-Real-time streaming responses
-Comprehensive Sikka API integration
-Code syntax highlighting
-Conversation management
+Interactive chat interface for API interactions <br>
+Support for multiple AI models (Llama 3.2 and Claude 3 Sonnet)<br>
+Real-time streaming responses<br>
+Comprehensive Sikka API integration<br>
+Code syntax highlighting<br>
+Conversation management<br>
 Context-aware responses
 
 ## 📋 Prerequisites
