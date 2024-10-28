@@ -43,24 +43,7 @@ pip install -r requirements.txt
 
 ## 📁 Project Structure
 
-.
-├── backend/
-│   ├── __init__.py
-│   ├── app.py                 # Main Flask application
-│   ├── api_documentation.py   # Sikka API documentation
-│   ├── chat_manager.py       # Chat context management
-│   ├── config.py             # Configuration settings
-│   ├── model_handlers.py     # AI model handlers
-│   └── prompt_manager.py     # Prompt templates
-├── frontend/
-│   ├── static/
-│   │   ├── css/
-│   │   │   └── style.css    # Main stylesheet
-│   │   └── js/
-│   │       └── main.js      # Frontend JavaScript
-│   └── templates/
-│       └── index.html       # Main HTML template
-└── README.md
+![image](https://github.com/user-attachments/assets/d3c08bec-8a55-4013-9e3b-bcba09495747)
 
 ## 🔌 Available APIs
 
